@@ -15,12 +15,13 @@ Features
  * Internal/external temperature sensors (LM60) to read temperature in and outside the payload
  * Active/passive buzzer support to ease acoustic payload location.
  * 2 x SMA female plugs (1 x GPS in + 1 x radio out)
+ * EXPERIMENTAL Barometer Report Support for Arduino A4 and A5
  * Open source (GPLv2 license), both software and hardware. In other words, do whatever you want with it: modify it, add it to your project, etc. as long as you opensource your modifications as well.
 
 Download
 ========
 
-The latest version is 1.52.
+This is a fork off of the trackuino/trackuino firmware, but with custom features.
 
 Use the `Download ZIP` button to get the source code.
 
@@ -31,6 +32,8 @@ If you are building for the Arduino platform you need Arduino IDE version 0023 o
 
 If you are building for the Chipkit Uno32 you need the Mpide IDE. Tested with 0023-20130715. Get it from the [Chipkit site](http://chipkit.net/).
 
+Add the 
+
 Unzip the firmware in your sketches directory and load it up by double-clicking on trackuino.ino.
 
 The single most important configuration file is "config.h". The file is self-documented. Here is where you set up your callsign, among other things.
@@ -38,21 +41,12 @@ The single most important configuration file is "config.h". The file is self-doc
 Flashing
 ========
 
-**Important**: When flashing the Arduino/Uno32, remove the Venus GPS or the entire Trackuino shield. After flashing the firmware, you can plug it back in. The GPS and the host computer share the same serial port on the AVR, so they will conflict when used together.
+**Important**: When flashing the Arduino/Uno32, remove the Venus GPS or the entire Trackuino shield (as well as any other connections). After flashing the firmware, you can plug it back in. The GPS and the host computer share the same serial port on the AVR, so they will conflict when used together.
 
 Hardware
 ========
 
 The [Trackuino shield](https://github.com/trackuino/shield) repository contains the Eagle schematic / pcb files of a shield you can build as-is (gerber files are included) or modify to suit your needs. Check its README for details.
-
-Related projects
-================
-
-Some other HAB-related projects I wrote:
-
-  * https://github.com/trackuino/hab-tracker - balloon trajectory prediction tool for Android 
-  * https://github.com/trackuino/aprsdb - an efficient and queriable APRS database server (required by the Hab Tracker Android app)
-  * https://github.com/trackuino/chdk-intervalometer - a LUA intervalometer for the old Canon A570IS camera (which might work on other CHDK cameras too)
 
 Support
 =======
