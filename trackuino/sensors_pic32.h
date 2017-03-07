@@ -20,6 +20,7 @@
 #define __SENSORS_PIC32_H__
 
 void sensors_setup();
+double sensors_barometer_pressure();
 unsigned long sensors_aref();
 long sensors_internal_temp();
 int sensors_int_lm60();

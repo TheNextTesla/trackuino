@@ -35,6 +35,11 @@ void sensors_setup()
   analogReference(DEFAULT);       // Ref=AVDD, AVSS
 }
 
+double sensors_barometer_pressure()
+{
+   return 0.0;
+}
+
 int sensors_lm60(int powerPin, int readPin)
 {
   uint16_t adc = 0;

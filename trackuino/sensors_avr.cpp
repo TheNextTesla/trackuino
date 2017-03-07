@@ -32,6 +32,13 @@
 #  include <WProgram.h>
 #endif
 
+#include <Wire.h>
+#include <SFE_BMP180.h>
+SFE_BMP180 barometer;
+
+double last_pressure_reading = 0.0;
+bool safe_to_use_bmp = (USE_BAROMETER == 1);
+
 /*
  * sensors_aref: measure an external voltage hooked up to the AREF pin,
  * optionally (and recommendably) through a pull-up resistor. This is
@@ -69,6 +76,66 @@ void sensors_setup()
 {
   pinMode(INTERNAL_LM60_VS_PIN, OUTPUT);
   pinMode(EXTERNAL_LM60_VS_PIN, OUTPUT);
+
+  //Based upon the SFE_BMP180 example provided with the library
+  if(USE_BAROMETER == 1)
+  {
+    barometer.begin();
+  }
+}
+
+double sensors_barometer_pressure()
+{
+   char status = barometer.startTemperature();
+   double T, P;
+
+   if(!safe_to_use_bmp)
+   {
+     if(status != 0)
+     {
+      safe_to_use_bmp = true;
+     }
+
+     return 0.0;
+   }
+   
+   if(status != 0)
+   {
+     //TODO: See if a 5 milli delay in startup could cause timing issues
+     delay(status);
+     status = barometer.getTemperature(T);
+      
+     if(status != 0)
+     {
+       status = barometer.startPressure(BAROMETER_SAMPLING);
+
+       if(status != 0)
+       {
+         delay(status);
+         //TODO: Add Efficency for outdoor temp calculation which requires less time
+         status = barometer.getPressure(T, P);
+
+         if(status != 0)
+         {
+            return barometer.getPressure(P, T);
+         }
+       }
+       else
+       {
+         safe_to_use_bmp = false;
+       }
+     }
+     else
+     {
+        safe_to_use_bmp = false;
+     }
+   }
+   else
+   {
+      safe_to_use_bmp = false;
+   }
+
+   return 0.0;
 }
 
 long sensors_internal_temp()
