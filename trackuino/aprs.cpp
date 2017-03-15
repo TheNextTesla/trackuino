@@ -71,6 +71,9 @@ void aprs_send()
   ax25_send_string("/Ti=");
   snprintf(temp, 6, "%d", sensors_int_lm60());
   ax25_send_string(temp);
+  ax25_send_string("/P=");
+  snprintf(temp, 6, "%d", sensors_barometer_pressure());
+  ax25_send_string(temp);
   ax25_send_string("/Te=");
   snprintf(temp, 6, "%d", sensors_ext_lm60());
   ax25_send_string(temp);

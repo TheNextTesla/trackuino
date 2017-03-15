@@ -45,6 +45,9 @@
 #include "sensors_avr.h"
 #include "sensors_pic32.h"
 
+#include <SFE_BMP180.h>
+#include <Wire.h>
+
 // Arduino/AVR libs
 #if (ARDUINO + 1) >= 100
 #  include <Arduino.h>
