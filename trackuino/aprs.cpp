@@ -75,12 +75,11 @@ void aprs_send()
   snprintf(temp, 6, "%d", sensors_ext_lm60());
   ax25_send_string(temp);
   
-  if(USE_BAROMETER == 1)
-  {
+  #ifdef USE_BAROMETER
     ax25_send_string("/P=");
     snprintf(temp, 6, "%d", sensors_barometer_pressure());
     ax25_send_string(temp);
-  }
+  #endif
   
   ax25_send_string("/V=");
   snprintf(temp, 6, "%d", sensors_vin());

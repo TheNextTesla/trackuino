@@ -146,8 +146,7 @@
 #define EXTERNAL_LM60_VOUT_PIN   1
 
 //Whether or not to attempt to use an attached barometer
-//Set 1 if a working BMP180 is attached the the respective Serial Port(s) on the board
-#define USE_BAROMETER 1
+//#define USE_BAROMETER
 
 //The sampling rate of the barometer (0 , 3)
 //0 is low accuracy low rate, 3 is high accuracy high rate

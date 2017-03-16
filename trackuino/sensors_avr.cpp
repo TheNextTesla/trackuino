@@ -32,12 +32,14 @@
 #  include <WProgram.h>
 #endif
 
-#include <Wire.h>
-#include <SFE_BMP180.h>
-SFE_BMP180 barometer;
+#ifdef USE_BAROMETER
+  #include <Wire.h>
+  #include <SFE_BMP180.h>
+  SFE_BMP180 barometer;
 
-double last_pressure_reading = 0.0;
-bool safe_to_use_bmp = (USE_BAROMETER == 1);
+  double last_pressure_reading = 0.0;
+  bool safe_to_use_bmp = true;
+#endif
 
 /*
  * sensors_aref: measure an external voltage hooked up to the AREF pin,
@@ -78,12 +80,12 @@ void sensors_setup()
   pinMode(EXTERNAL_LM60_VS_PIN, OUTPUT);
 
   //Based upon the SFE_BMP180 example provided with the library
-  if(USE_BAROMETER == 1)
-  {
+  #ifdef USE_BAROMETER
     barometer.begin();
-  }
+  #endif
 }
 
+#ifdef USE_BAROMETER
 double sensors_barometer_pressure()
 {
    char status = barometer.startTemperature();
@@ -137,6 +139,7 @@ double sensors_barometer_pressure()
 
    return 0.0;
 }
+#endif
 
 long sensors_internal_temp()
 {

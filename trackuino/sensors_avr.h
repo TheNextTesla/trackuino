@@ -20,7 +20,9 @@
 #define __SENSORS_AVR_H__
 
 void sensors_setup();
-double sensors_barometer_pressure();
+#ifdef USE_BAROMETER
+  double sensors_barometer_pressure();
+#endif
 unsigned long sensors_aref();
 long sensors_internal_temp();
 int sensors_int_lm60();
