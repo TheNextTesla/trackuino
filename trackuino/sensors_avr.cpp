@@ -115,11 +115,11 @@ double sensors_barometer_pressure()
        {
          delay(status);
          //TODO: Add Efficency for outdoor temp calculation which requires less time
-         status = barometer.getPressure(T, P);
+         status = barometer.getPressure(P, T);
 
          if(status != 0)
          {
-            return barometer.getPressure(P, T);
+            return P;
          }
        }
        else

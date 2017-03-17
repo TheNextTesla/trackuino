@@ -77,7 +77,7 @@ void aprs_send()
   
   #ifdef USE_BAROMETER
     ax25_send_string("/P=");
-    snprintf(temp, 6, "%d", sensors_barometer_pressure());
+    snprintf(temp, 6, "%4d", round(sensors_barometer_pressure()));
     ax25_send_string(temp);
   #endif
   
