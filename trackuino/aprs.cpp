@@ -77,7 +77,7 @@ void aprs_send()
   
   #ifdef USE_BAROMETER
     ax25_send_string("/P=");
-    snprintf(temp, 6, "%6ld", (long)(round(sensors_barometer_pressure() * 10))); // Conversion to Pascals
+    snprintf(temp, 6, "%ld", (long)(round(sensors_barometer_pressure() * 100))); // Conversion to Pascals
     ax25_send_string(temp);
   #endif
   
