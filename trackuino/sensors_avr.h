@@ -21,7 +21,7 @@
 
 void sensors_setup();
 #ifdef USE_BAROMETER
-  double sensors_barometer_pressure();
+  unsigned long sensors_barometer_pressure();
 #endif
 unsigned long sensors_aref();
 long sensors_internal_temp();

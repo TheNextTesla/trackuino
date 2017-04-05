@@ -15,7 +15,7 @@ Features
  * Internal/external temperature sensors (LM60) to read temperature in and outside the payload
  * Active/passive buzzer support to ease acoustic payload location.
  * 2 x SMA female plugs (1 x GPS in + 1 x radio out)
- * EXPERIMENTAL Barometer Report Support for Arduino A4 and A5
+ * Barometer Reporting Support for Arduino Ports A4 and A5 on the Uno
  * Open source (GPLv2 license), both software and hardware. In other words, do whatever you want with it: modify it, add it to your project, etc. as long as you opensource your modifications as well.
 
 Download

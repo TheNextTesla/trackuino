@@ -86,7 +86,7 @@ void sensors_setup()
 }
 
 #ifdef USE_BAROMETER
-double sensors_barometer_pressure()
+long sensors_barometer_pressure()
 {
    char status = barometer.startTemperature();
    double T, P;
@@ -119,7 +119,7 @@ double sensors_barometer_pressure()
 
          if(status != 0)
          {
-            return P;
+            return round_to_long(P * 100);
          }
        }
        else
@@ -137,9 +137,22 @@ double sensors_barometer_pressure()
       safe_to_use_bmp = false;
    }
 
-   return 0.0;
+   return (long) 0;
 }
 #endif
+
+long round_to_long(double numberDouble)
+{
+  double number = numberDouble;
+  if((number - (long) number) >= 0.5)
+  {
+   return ((long) number) + 1; 
+  }
+  else
+  {
+    return ((long) number);
+  }
+}
 
 long sensors_internal_temp()
 {
