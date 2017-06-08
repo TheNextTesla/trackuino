@@ -6,7 +6,9 @@ Trackuino is intended for use by licensed radio amateurs.
 
 Features
 ========
-
+From this Fork:
+ * Barometer Reporting Support for Arduino Ports A4 and A5 on the Uno (See Below)
+Original Features:
  * Arduino shield form factor (you can stack more shields on it)
  * GPS: Venus 638FLPx. Reports okay above 18 Km.
  * Radio: Radiometrix's HX1 (300 mW).
@@ -15,7 +17,6 @@ Features
  * Internal/external temperature sensors (LM60) to read temperature in and outside the payload
  * Active/passive buzzer support to ease acoustic payload location.
  * 2 x SMA female plugs (1 x GPS in + 1 x radio out)
- * Barometer Reporting Support for Arduino Ports A4 and A5 on the Uno
  * Open source (GPLv2 license), both software and hardware. In other words, do whatever you want with it: modify it, add it to your project, etc. as long as you opensource your modifications as well.
 
 Download
@@ -47,6 +48,11 @@ Hardware
 ========
 
 The [Trackuino shield](https://github.com/trackuino/shield) repository contains the Eagle schematic / pcb files of a shield you can build as-is (gerber files are included) or modify to suit your needs. Check its README for details.
+
+Barometer Support
+========
+
+This fork was created with the intention of adding pressure data to the returning APRS packet, if attached and enabled in 'config.h'.  This feature was intended to be used (and tested as such) for use with a BMP180 or similiar I2C barometers, but could easily be adapted for other situations.
 
 Support
 =======
